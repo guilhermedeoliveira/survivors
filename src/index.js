@@ -3,14 +3,14 @@ import reactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
+import logger from 'redux-logger';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { injectGlobal } from 'styled-components';
 
 import App from './components/App';
-// import reducers from './reducers';
-const reducers = () => { };
+import reducers from './reducers';
 
-const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(reducers, applyMiddleware(reduxThunk, logger));
 
 const theme = createMuiTheme();
 
