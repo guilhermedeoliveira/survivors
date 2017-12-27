@@ -1,9 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import MainAppBar from './MainAppBar';
 import RegisterContainer from '../survivor/RegisterContainer';
 import MapContainer from '../map/MapContainer';
-import MainAppBar from './MainAppBar';
+import ReportsContainer from '../report/ReportsContainer';
 
 const App = () => (
   <div>
@@ -12,6 +13,7 @@ const App = () => (
         <Route path="/" component={MainAppBar} />
         <Route exact path="/" component={RegisterContainer} />
         <Route exact path="/map" component={MapContainer} />
+        <Route exact path="/reports" component={ReportsContainer} />
       </React.Fragment>
     </BrowserRouter>
   </div>

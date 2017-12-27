@@ -12,6 +12,23 @@ const getSurvivors = () =>
     .get(`${PEOPLE_ENDPOINT}.json`)
     .then(response => response.data);
 
+const getReports = () => {
+  axios.all([
+    axios.get(`${REPORT_ENDPOINT}/infected.json`),
+    axios.get(`${REPORT_ENDPOINT}/non_infected.json`),
+    axios.get(`${REPORT_ENDPOINT}/people_inventory.json`),
+    axios.get(`${REPORT_ENDPOINT}/infected_points.json`)
+  ])
+  .then(arr => {
+    return {
+      infected: arr[0].data.report,
+      nonInfected: arr[1].data.report,
+      peopleInventory: arr[2].data.report,
+      infectedPoints: arr[3].data.report
+    }
+  });
+};
+
 const submitSurvivor = survivor => 
   axios
     .post(`${PEOPLE_ENDPOINT}.json`, survivor)
@@ -19,5 +36,6 @@ const submitSurvivor = survivor =>
 
 export default {
   getSurvivors,
-  submitSurvivor
+  submitSurvivor,
+  getReports
 }

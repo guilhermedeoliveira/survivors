@@ -42,8 +42,6 @@ export default function reducer(state = initialState, action = {}) {
             ...state.survivors,
             ...action.payload
           ]
-          // Object.assign({}, state.survivors, { lonlat: getCoordsFromString(action.payload.lonlat) })
-            // lontat: getCoordsFromString(action.payload.lonlat)
         };
       case types.SUBMIT_SURVIVOR_FAILED:
         return {

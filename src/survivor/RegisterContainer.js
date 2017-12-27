@@ -1,10 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import Paper from 'material-ui/Paper';
 
 import Register from './Register';
-import Registering from './Registering';
 
 const Container = styled.div`
   text-align: center;
@@ -40,18 +38,6 @@ const SubTitle = styled.h2`
   font-weight: 300;
   margin-bottom: 50px;
 `;
-
-const survivor = {
-  'name': 'Gui',
-  'age': '10',
-  'sex': 'male',
-  'latitute': '10',
-  'longitude': '10',
-  'water': 1,
-  'food': 2,
-  'medication': 3,
-  'ammunition': 4
-};
 
 const RegisterContainer = () => (
   <React.Fragment>
