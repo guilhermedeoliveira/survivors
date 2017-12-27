@@ -59,8 +59,7 @@ class MapComponent extends Component {
         {
           survivors.map(s => {
             const arrayOfCoords = getCoordsFromString(s.lonlat);
-            console.log(s);
-            return (
+            return s.lonlat && (
               <Marker
                 title={s.name}
                 onClick={this.onMarkerClick}
