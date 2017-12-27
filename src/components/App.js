@@ -8,9 +8,11 @@ import MainAppBar from './MainAppBar';
 const App = () => (
   <div>
     <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={MapContainer} />
-      </Switch>
+      <React.Fragment>
+        <Route path="/" component={MainAppBar} />
+        <Route exact path="/" component={RegisterContainer} />
+        <Route exact path="/map" component={MapContainer} />
+      </React.Fragment>
     </BrowserRouter>
   </div>
 );
