@@ -37,7 +37,7 @@ const Error = styled.div`
 	margin: 5px 0;
 `;
 
-class Register extends Component {
+class Registering extends Component {
   state = {
     name: '',
     age: '',
@@ -181,4 +181,4 @@ const validate = values => {
 export default reduxForm({
   validate,
   form: 'RegisterForm'
-})(Register)
+})(Registering)

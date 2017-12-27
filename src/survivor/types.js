@@ -1,0 +1,7 @@
+export const SUBMIT_SURVIVOR = 'survivor/SUBMIT_SURVIVOR';
+export const SUBMIT_SURVIVOR_SUCCESS = 'survivor/SUBMIT_SURVIVOR_SUCCESS';
+export const SUBMIT_SURVIVOR_FAILED = 'survivor/SUBMIT_SURVIVOR_FAILED';
+
+export const GET_SURVIVORS = 'survivor/GET_SURVIVORS';
+export const GET_SURVIVORS_SUCCESS = 'survivor/GET_SURVIVORS_SUCCESS';
+export const GET_SURVIVORS_FAILED = 'survivor/GET_SURVIVORS_FAILED';

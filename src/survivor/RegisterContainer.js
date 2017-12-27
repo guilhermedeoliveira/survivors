@@ -1,14 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Paper from 'material-ui/Paper';
 
 import Register from './Register';
 import Registering from './Registering';
-
-import { submitSurvivor } from './duck';
 
 const Container = styled.div`
   text-align: center;
@@ -45,7 +41,6 @@ const SubTitle = styled.h2`
   margin-bottom: 50px;
 `;
 
-// const registerSurvivor = values => console.log('registered!', values);
 const survivor = {
   'name': 'Gui',
   'age': '10',
@@ -62,19 +57,15 @@ const RegisterContainer = () => (
   <React.Fragment>
     <Container>
       <Title>Survivors</Title>
-      <SubTitle>Please, sign up and localize human beings</SubTitle>
+      <SubTitle>Please, register and localize human beings</SubTitle>
       <MyPaper>
-        <Registering submitSurvivor={submitSurvivor(survivor)} />
+        <Register />
       </MyPaper>
     </Container>
   </React.Fragment>
 );
 
-export default connect(
-  state => ({
-    survivor: state.survivor
-  }),
-  dispatch => ({
-    submitSurvivor: bindActionCreators({ submitSurvivor }, dispatch)
-  })
-)(RegisterContainer);
+export default RegisterContainer;
+
+
+
