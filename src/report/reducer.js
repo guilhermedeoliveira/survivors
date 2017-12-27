@@ -4,6 +4,7 @@ import { getCoordsFromString } from '../services/utils';
 
 const initialState = {
   loadingReports: false,
+  hasFetchedReports: false,
   reports: {}
 }
 
@@ -12,18 +13,21 @@ export default function reducer(state = initialState, action = {}) {
       case types.GET_REPORTS:
         return {
           ...state,
-          loadingReports: true
+          loadingReports: true,
+          hasFetchedReports: false,
         };
       case types.GET_REPORTS_SUCCESS:
         return {
           ...state,
           loadingReports: false,
+          hasFetchedReports: true,
           reports: action.payload
         };
       case types.GET_REPORTS_FAILED:
         return {
           ...state,
-          loadingReports: false
+          loadingReports: false,
+          hasFetchedReports: false,
         };
       default: return state;
     }

@@ -16,7 +16,7 @@ const theme = createMuiTheme();
 
 injectGlobal`
   body {
-    background-color: #fafafa;
+    background-color: #e8e8e8;
     color: #24292e;
     padding: 0;
     margin: 0;
