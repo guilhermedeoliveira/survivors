@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -29,14 +31,28 @@ const StyledToolBar = styled(Toolbar)`
   justify-content: space-between;
 `;
 
+const StyledLink = styled(Link)`
+  color: rgba(255, 255, 255, 1);
+  text-decoration: none;
+`;
+
 const MainAppBar = props => (
     <div>
       <StyledAppBar position="static">
         <StyledToolBar>
           <Typography type="title" color="inherit">
-            Survivors
+            <StyledLink to="/">
+              Survivors
+            </StyledLink>
           </Typography>
-          <Button color="contrast">Login</Button>
+          <div>
+            <StyledLink to="/map">
+              <Button color="contrast">Map</Button>
+            </StyledLink>
+            <StyledLink to="/reports">
+              <Button color="contrast">Reports</Button>
+            </StyledLink>
+          </div>
         </StyledToolBar>
       </StyledAppBar>
     </div>
