@@ -5,9 +5,9 @@ const BASE_URL = 'http://zssn-backend-example.herokuapp.com/api';
 const PEOPLE_ENDPOINT = `${BASE_URL}/people`;
 const REPORT_ENDPOINT = `${BASE_URL}/report`;
 
-const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
+// const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
 
-// survivor functions
+// survivor requests
 const getSurvivors = () => 
   axios
     .get(`${PEOPLE_ENDPOINT}.json`)
@@ -19,7 +19,7 @@ const submitSurvivor = survivor =>
     .post(`${PEOPLE_ENDPOINT}.json`, survivor)
     .then(response => response.data);
 
-// report functions
+// report requests
 const getInfected = () =>
   axios.get(`${REPORT_ENDPOINT}/infected.json`)
   

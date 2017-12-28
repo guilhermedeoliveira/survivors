@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import MainAppBar from './MainAppBar';
 import RegisterContainer from '../survivor/RegisterContainer';

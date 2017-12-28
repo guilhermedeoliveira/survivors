@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Paper from 'material-ui/Paper';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -27,7 +26,6 @@ class ReportsContainer extends Component {
   }
   
   render() {
-    console.log(this.props.reportState);
     const {
       hasFetchedReports,
       reports: {

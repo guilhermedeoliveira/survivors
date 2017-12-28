@@ -1,7 +1,5 @@
 import * as types from './types';
 
-import { getCoordsFromString } from '../services/utils';
-
 const initialState = {
   loadingSubmitSurvivor: false,
   loadingGetSurvivor: false,
@@ -43,7 +41,7 @@ export default function reducer(state = initialState, action = {}) {
             ...action.payload
           ]
         };
-      case types.SUBMIT_SURVIVOR_FAILED:
+      case types.GET_SURVIVORS_FAILED:
         return {
           ...state,
           loadingGetSurvivor: false

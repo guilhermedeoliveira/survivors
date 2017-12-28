@@ -3,18 +3,14 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form'
+import { withRouter } from "react-router-dom";
 
 import TextField from 'material-ui/TextField'
-import { FormControl, FormHelperText, FormControlLabel, FormLabel } from 'material-ui/Form';
+import { FormControl, FormControlLabel, FormLabel } from 'material-ui/Form';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import Button from 'material-ui/Button';
 
 import * as survivorActions from './actions';
-
-const FlexFormControl = styled(FormControl)`
-  display: flex;
-  justify-content: space-between;
-`;
 
 const StyledFormLabel = styled(FormLabel)`
   margin-top: 1rem;
@@ -25,11 +21,6 @@ const StyledRadioGroup = styled(RadioGroup)`
 `;
 
 const StyledButton = styled(Button)`
-  margin-top: 1rem;
-  background-color: rgb(48, 79, 254);
-`;
-
-const SubmitButton = styled.button`
   margin-top: 1rem;
 `;
 
@@ -47,12 +38,27 @@ const validate = values => {
 
 
 class Register extends Component {
-  componentDidMount() {
-    this.props.survivorActions.getSurvivors();
-    console.log(this.props.survivorState.survivors);
+  state = {
+    currentLocation: {
+      lng: '',
+      lat: ''
+    }
+  }
+
+  getCurrentLocation = () => {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((pos) => {
+        const coords = pos.coords;
+        this.setState({
+          currentLocation: {
+            lng: coords.longitude,
+            lat: coords.latitude
+          }
+        })
+      })
+    }
   }
   
-
   renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
     <TextField id={label}
       label={label}
@@ -70,28 +76,42 @@ class Register extends Component {
         valueSelected={input.value}
         onChange={(event, value) => input.onChange(value)}
       >
-      <FormControlLabel value="male" control={<Radio />} label="Male" />
-      <FormControlLabel value="female" control={<Radio />} label="Female" />
-      <FormControlLabel value="other" control={<Radio />} label="Other" />
+      <FormControlLabel value="M" control={<Radio />} label="Male" />
+      <FormControlLabel value="F" control={<Radio />} label="Female" />
       </StyledRadioGroup>
     </FormControl>
   );
 
+  handleSurvivorSubmit = async (values) => {
+    const { history, survivorActions: { submitSurvivor } } = this.props;
+    const { currentLocation: { lng, lat } } = this.state;
+    
+    const items = `Water:${values.water};Food:${values.food};Medication:${values.medication};Ammunition:${values.ammunition}`;
+    const lonlat = lng && lat ? `POINT (${lng} ${lat})` : null;
+
+    const survivor = {
+      name: values.name,
+      age: Number(values.age),
+      gender: values.sex,
+      items,
+      lonlat
+    }
+
+    await submitSurvivor(survivor);
+    history.push("/map");
+  };
+
   render() {
-    const { handleSubmit, survivorActions, pristine, submitting } = this.props;
-    console.log(this.props);
+    const { handleSubmit, pristine, submitting } = this.props;
+
     return (
-      <form onSubmit={handleSubmit(survivorActions.getSurvivors)}>
+      <form onSubmit={handleSubmit(this.handleSurvivorSubmit)}>
         <FormControl fullWidth>
           <Field name="name" component={this.renderTextField} label="Name"/>
         </FormControl>
         <FormControl fullWidth>
           <Field name="age" component={this.renderTextField} label="Age"/>
         </FormControl>
-        <FlexFormControl fullWidth>
-          <Field name="latitute" component={this.renderTextField} label="Latitute"/>
-          <Field name="longitude" component={this.renderTextField} label="Longitude"/>
-        </FlexFormControl>
         <div>
           <Field name="sex" component={this.renderRadioGroup} />
         </div>
@@ -102,14 +122,18 @@ class Register extends Component {
           <Field name="medication" component={this.renderTextField} label="Medication"/>
           <Field name="ammunition" component={this.renderTextField} label="Ammunition"/>
         </FormControl>
-
-        <FormControl>
-          <SubmitButton type="submit" disabled={pristine || submitting}>Register</SubmitButton>
+        <FormControl fullWidth>
+          <StyledButton raised component="span" onClick={this.getCurrentLocation}>Get My Coords</StyledButton>
+        </FormControl>
+        <FormControl fullWidth>
+          <StyledButton raised color="primary" type="submit" disabled={pristine || submitting}>Register</StyledButton>
         </FormControl>
       </form>
     )
   };
 }
+
+Register = withRouter(Register);
 
 Register = connect(
   state => ({

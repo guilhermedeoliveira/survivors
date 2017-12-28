@@ -1,7 +1,5 @@
 import * as types from './types';
 
-import { getCoordsFromString } from '../services/utils';
-
 const initialState = {
   loadingReports: false,
   hasFetchedReports: false,

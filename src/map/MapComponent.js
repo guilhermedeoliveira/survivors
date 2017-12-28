@@ -61,6 +61,7 @@ class MapComponent extends Component {
             const arrayOfCoords = getCoordsFromString(s.lonlat);
             return s.lonlat && (
               <Marker
+                key={s.created_at}
                 title={s.name}
                 onClick={this.onMarkerClick}
                 name={s.name}

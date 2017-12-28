@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import MapContainer from './MapContainer';
 import MapComponent from './MapComponent';
 import * as survivorActions from '../survivor/actions';
 
-class MapWrapper extends Component {
+class MapContainer extends Component {
   state = {
     survivors: []
   }
@@ -16,7 +15,7 @@ class MapWrapper extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { survivors, loadingGetSurvivor, hasFinishedSurvivors } = nextProps.survivorState;
+    const { survivors, hasFinishedSurvivors } = nextProps.survivorState;
     
     if (hasFinishedSurvivors) this.setState({ survivors });
   }
@@ -35,4 +34,4 @@ export default connect(
     dispatch => ({
       survivorActions: bindActionCreators(survivorActions, dispatch)
     })
-)(MapWrapper);
+)(MapContainer);
