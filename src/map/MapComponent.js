@@ -41,6 +41,7 @@ class MapComponent extends Component {
 
   render() {
     const { survivors } = this.props;
+    console.log(survivors);
 
     return (
       <Map
@@ -61,7 +62,7 @@ class MapComponent extends Component {
             const arrayOfCoords = getCoordsFromString(s.lonlat);
             return s.lonlat && (
               <Marker
-                key={s.created_at}
+                key={s.location}
                 title={s.name}
                 onClick={this.onMarkerClick}
                 name={s.name}

@@ -39,7 +39,7 @@ class ReportsContainer extends Component {
       <Container>
         <Report>
           <h3>{infected.description}</h3>
-          <Stats><b>{`${(infected.average_infected.toFixed(2)) * 100}%`}</b></Stats>
+          <Stats><b>{`${(infected.average_infected * 100).toFixed(2)}%`}</b></Stats>
         </Report>
         <Report>
           <h3>{infectedPoints.description}</h3>
@@ -47,7 +47,7 @@ class ReportsContainer extends Component {
         </Report>
         <Report>
           <h3>{nonInfected.description}</h3>
-          <Stats><b>{`${(nonInfected.average_healthy).toFixed(2) * 100}%`}</b></Stats>
+          <Stats><b>{`${(nonInfected.average_healthy * 100).toFixed(2)}%`}</b></Stats>
         </Report>
         <Report>
           <h3>Average items quantity per healthy person</h3>
