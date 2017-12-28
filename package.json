@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
+    "cypress": "^1.4.1",
     "eslint": "^4.13.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
@@ -37,6 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "lint": "eslint src",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress": "cypress open"
   }
 }
