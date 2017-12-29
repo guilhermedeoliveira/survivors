@@ -1,7 +1,9 @@
+// packages
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+// style
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -25,7 +27,6 @@ const StyledAppBar = styled(AppBar)`
   padding: 0 2rem;
 `;
 
-
 const StyledToolBar = styled(Toolbar)`
   display: flex;
   justify-content: space-between;
@@ -48,6 +49,9 @@ const MainAppBar = props => (
           <div>
             <StyledLink to="/map">
               <Button color="contrast">Map</Button>
+            </StyledLink>
+            <StyledLink to="/trade">
+              <Button color="contrast">Trade</Button>
             </StyledLink>
             <StyledLink to="/reports">
               <Button color="contrast">Reports</Button>

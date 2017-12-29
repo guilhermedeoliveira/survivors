@@ -1,6 +1,19 @@
+// packages
 import React, { Component } from 'react';
-import { Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import { 
+  object,
+  arrayOf
+} from 'prop-types';
 
+// map
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper
+} from 'google-maps-react';
+
+// local
 import { GOOGLE_MAPS_KEY } from '../services/keys';
 import { getCoordsFromString } from '../services/utils';
 
@@ -13,6 +26,11 @@ class MapComponent extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {}
+  }
+
+  static propTypes = {
+    survivors: arrayOf(object)
+      .isRequired
   }
 
   onMarkerClick = (props, marker, e) => {
@@ -41,15 +59,15 @@ class MapComponent extends Component {
 
   render() {
     const { survivors } = this.props;
-    console.log(survivors);
-
+    
     return (
       <Map
         google={this.props.google}
-        style={{
+        style= {{
           width: '100%',
           height: '100%',
-          position: 'relative'}}
+          position: 'relative'
+        }}
         zoom={4}
         initialCenter={{
             lat: this.state.currentLocation.lat,

@@ -5,14 +5,13 @@ const BASE_URL = 'http://zssn-backend-example.herokuapp.com/api';
 const PEOPLE_ENDPOINT = `${BASE_URL}/people`;
 const REPORT_ENDPOINT = `${BASE_URL}/report`;
 
-// const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
-
 // survivor requests
+const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
+
 const getSurvivors = () => 
   axios
     .get(`${PEOPLE_ENDPOINT}.json`)
     .then(response => response.data);
-
 
 const submitSurvivor = survivor => 
   axios
@@ -45,8 +44,15 @@ const getReports = () =>
     })
 );
 
+// trade requests
+const getItems = id =>
+  axios
+    .get(`${PEOPLE_ENDPOINT}/${id}/properties.json`)
+    .then(response => response.data);
+
 export default {
   getSurvivors,
   submitSurvivor,
-  getReports
+  getReports,
+  getItems
 }

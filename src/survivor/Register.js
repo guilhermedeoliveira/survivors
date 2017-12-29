@@ -1,15 +1,22 @@
-import React, { Component } from 'react'
-import styled from 'styled-components';
+// packages
+import React, { Component } from 'react';
+import { 
+  shape,
+  func,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form'
 import { withRouter } from "react-router-dom";
 
+// style
+import styled from 'styled-components';
 import TextField from 'material-ui/TextField'
 import { FormControl, FormControlLabel, FormLabel } from 'material-ui/Form';
 import Radio, { RadioGroup } from 'material-ui/Radio';
 import Button from 'material-ui/Button';
 
+// local
 import * as survivorActions from './actions';
 
 const StyledFormLabel = styled(FormLabel)`
@@ -36,13 +43,18 @@ const validate = values => {
   return errors;
 };
 
-
 class Register extends Component {
   state = {
     currentLocation: {
       lng: '',
       lat: ''
     }
+  }
+
+  static propTypes = {
+    survivorActions: shape({
+      submitSurvivor: func
+    }).isRequired
   }
 
   getCurrentLocation = () => {

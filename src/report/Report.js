@@ -1,4 +1,8 @@
+// packages
 import React from 'react';
+import PropTypes from 'prop-types';
+
+// style
 import styled from 'styled-components';
 import Paper from 'material-ui/Paper';
 
@@ -27,5 +31,9 @@ const Report = props => (
   </StyledReport>
 );
   
+Report.propTypes = {
+  children: PropTypes.node.isRequired,
+}
+
 export default Report;
   

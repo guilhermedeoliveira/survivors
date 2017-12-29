@@ -1,7 +1,11 @@
+// packages
 import React from 'react';
+
+// style
 import styled from 'styled-components';
 import Paper from 'material-ui/Paper';
 
+// local
 import Register from './Register';
 
 const Container = styled.div`

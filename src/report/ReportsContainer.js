@@ -1,8 +1,17 @@
+// packages
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import { 
+  shape,
+  object,
+  bool,
+} from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+// style
+import styled from 'styled-components';
+
+// local
 import Report from './Report';
 import * as reportActions from './actions';
 
@@ -21,6 +30,13 @@ const Stats = styled.p`
 
 
 class ReportsContainer extends Component {
+  static propTypes = {
+    reportState: shape({
+      hasFetchedReports: bool,
+      reports: object
+    }).isRequired
+  }
+
   componentDidMount() {
     this.props.reportActions.getReports();
   }
