@@ -2,7 +2,7 @@
 Web application developed to find survivors and share resources between them.
 
 ## Comments
-It is better to run the project locally, because the app hosted in heroku has some problem with insecure endpoint requests. It has not yet been analysed.
+It is better to run the project locally, because the app hosted in heroku has some problems with insecure endpoint requests. It has not yet been analysed.
 
 ![image](https://user-images.githubusercontent.com/20259146/34442673-755594be-eca2-11e7-9bc3-78bad21ca990.png)
 
@@ -43,7 +43,7 @@ Each module is organized with its own components, types, actions and reducers
 ## Tools and Main Libraries
 - ES2015
 - react.js
-- single file component through usage of ctyled components
+- single file component through usage of styled components
 - redux, redux-form
 - middlewares (redux-logger, redux-thunk)
 - style (material-ui, styled-components)
