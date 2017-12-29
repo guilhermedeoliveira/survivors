@@ -1,6 +1,11 @@
 # Survivors
 Web application developed to find survivors and share resources between them.
 
+## Comments
+It is better to run the project locally, because the app hosted in heroku has some problem with insecure endpoint requests. It has not yet been analysed.
+
+![image](https://user-images.githubusercontent.com/20259146/34442579-d47cebd2-eca1-11e7-8491-2fd56324058e.png)
+
 ## Features
 - Add survivor
 - Report of infected people
