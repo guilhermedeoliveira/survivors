@@ -1,14 +1,14 @@
 // packages
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 import { Field, reduxForm } from 'redux-form'
 import { withRouter } from "react-router-dom";
 
 // style
 import styled from 'styled-components';
 import TextField from 'material-ui/TextField';
-import { FormControl, FormControlLabel, FormLabel } from 'material-ui/Form';
+import { FormControl, FormLabel } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 
 const StyledFormLabel = styled(FormLabel)`
@@ -63,7 +63,6 @@ class Trade extends Component {
     const totalBuy = (WATER_POINTS * waterBuy) + (FOOD_POINTS * foodBuy) +
       (MEDICATION_POINTS * medicationBuy) + (AMMUNITION_POINTS * ammunitionBuy); 
     
-    console.log(totalSell);
     const items = `Water:${values.water};Food:${values.food};Medication:${values.medication};Ammunition:${values.ammunition}`;
     
     const survivor = {
@@ -80,6 +79,12 @@ class Trade extends Component {
     return (
       <form onSubmit={handleSubmit(this.handleSurvivorSubmit)}>
         <FormControl fullWidth>
+        <FormControl fullWidth>
+          <Field name="what-your-name" component={this.renderTextField} label="what is your name?"/>
+        </FormControl>
+        <FormControl fullWidth>
+          <Field name="whom-to-trade" component={this.renderTextField} label="To whom do you want to trade?"/>
+        </FormControl>
           <StyledFormLabel component="legend">Inventory to Sell</StyledFormLabel>
           <Field name="waterSell" component={this.renderTextField} label="Water"/>
           <Field name="foodSell" component={this.renderTextField} label="Food"/>

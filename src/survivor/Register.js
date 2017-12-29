@@ -33,8 +33,10 @@ const StyledButton = styled(Button)`
 
 const validate = values => {
   const errors = {};
-  const requiredFields = ['name', 'age', 'sex',
-    'latitute', 'longitude', 'water', 'food', 'medication', 'ammunition'];
+  const requiredFields = [
+    'name', 'age', 'sex', 'latitute', 'longitude',
+    'water', 'food', 'medication', 'ammunition'
+  ];
   requiredFields.forEach(field => {
     if (!values[field]) {
       errors[field] = 'Required'

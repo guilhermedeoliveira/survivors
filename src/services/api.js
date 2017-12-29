@@ -6,7 +6,7 @@ const PEOPLE_ENDPOINT = `${BASE_URL}/people`;
 const REPORT_ENDPOINT = `${BASE_URL}/report`;
 
 // survivor requests
-const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
+// const getSurvivorByID = id => `${PEOPLE_ENDPOINT}/id`;
 
 const getSurvivors = () => 
   axios

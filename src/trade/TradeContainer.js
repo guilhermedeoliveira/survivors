@@ -6,7 +6,6 @@ import {
   func,
   arrayOf
 } from 'prop-types';
-
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { getFormValues } from 'redux-form';
@@ -17,21 +16,18 @@ import Paper from 'material-ui/Paper';
 
 // local
 import Trade from './Trade';
-import Belonging from './Belonging';
 import * as survivorActions from '../survivor/actions';
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   text-align: center;
-  align: center;
   padding: 1rem;
 `;
 
 const MyPaper = styled(Paper)`
   margin: 1rem 0.5rem;
   padding: 1rem;
+  width: 33%;
+  margin: auto;
   > a {
     text-decoration: none;
     color: #24292e;
@@ -70,42 +66,24 @@ class TradeContainer extends Component {
       values: nextProps.values
     })
   }
-  
-  onChangeInput = (field, value) => {
-    console.log(field, value);
-  }
-  
+    
+  /*
   passBuyData() {
     const { values, survivors } = this.state;
-    console.log(values, survivors);
     const buyPerson = survivors.find(s => s.name === values.whatYourName);
-    console.log(buyPerson)
   }
+  */
 
   render() {
-    const { values } = this.state;
-    console.log('State', this.state)
+    // const { values } = this.state;
+
     return (
       <React.Fragment>
         <Container>
-          <div>
-            <SubTitle>Please, informe both name</SubTitle>
-            <MyPaper>
-              <Trade />
-            </MyPaper>
-          </div>
-          <div>
-            <SubTitle>Your belongings</SubTitle>
-            <MyPaper>
-              <Belonging />
-            </MyPaper>
-          </div>
-          <div>
-            <SubTitle>Someone else belongings</SubTitle>
-            <MyPaper>
-              <Belonging />
-            </MyPaper>
-          </div>
+          <SubTitle>Please, submit a trade</SubTitle>
+          <MyPaper>
+            <Trade />
+          </MyPaper>
         </Container>
       </React.Fragment>
    )
